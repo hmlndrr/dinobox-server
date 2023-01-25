@@ -13,6 +13,10 @@ const forbidden = [
   'btoa',
   'atob',
   'body',
+  'patch',
+  'delete',
+  'head',
+  'get',
   'fetch',
   '[',
   ']',
@@ -29,6 +33,7 @@ function spotForbiddenWords(text: string, kind: string) {
 function spotLargePayload(text: string, max: number) {
   if (text.length > max) throw new Error('Too much content to return')
 }
+
 
 async function execute(code: string) {
   try {
