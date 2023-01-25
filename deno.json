@@ -1,0 +1,25 @@
+{
+    "entrypoint": "file:///src/main.js",
+    "layers": [
+      {
+        "kind": "eszip",
+        "id": "user:5a40b5a2-5f66-4ab4-b516-899652f052ff"
+      }
+    ],
+    "permissions": {
+        "network": true,
+        "env": false,
+        "files": [
+            {
+                "allow": "r",
+                "path": "."
+            },
+            {
+                "allow": "w",
+                "path": "/",
+                "deny": true
+            }
+        ],
+        "deny": true
+    }
+  }
