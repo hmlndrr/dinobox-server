@@ -14,6 +14,8 @@ const forbidden = [
   'atob',
   'body',
   'fetch',
+  '[',
+  ']',
 ]
 
 function spotForbiddenWords(text: string, kind: string) {
