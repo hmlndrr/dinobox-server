@@ -20,6 +20,7 @@ const forbidden = [
   'fetch',
   '[',
   ']',
+  '/',
 ]
 
 function spotForbiddenWords(text: string, kind: string) {
