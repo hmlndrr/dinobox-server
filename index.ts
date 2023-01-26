@@ -20,6 +20,8 @@ const forbidden = [
   'head',
   'get',
   'fetch',
+  'encodeURI',
+  'decodeURI',
   '[',
   ']',
   '/',
