@@ -6,6 +6,7 @@ const forbidden = [
   'readfile',
   'post',
   'ls',
+  'open',
   'cat',
   'etc',
   'ever',
