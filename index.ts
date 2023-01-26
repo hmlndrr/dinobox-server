@@ -8,6 +8,8 @@ const forbidden = [
   'ls',
   'cat',
   'etc',
+  'rce',
+  'rse',
   'exec',
   'put',
   'btoa',
