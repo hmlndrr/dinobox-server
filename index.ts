@@ -3,7 +3,7 @@ import { serve } from 'https://deno.land/std/http/server.ts'
 const forbidden = [
   'flag',
   'index',
-  'file',
+  'readfile',
   'post',
   'ls',
   'open',
@@ -15,14 +15,13 @@ const forbidden = [
   'btoa',
   'atob',
   'body',
-  'deno',
-  'console',
   'patch',
   'delete',
   'head',
   'get',
   'fetch',
-  'code',
+  'encodeURI',
+  'decodeURI',
   '[',
   ']',
   '/',
@@ -36,17 +35,17 @@ function spotForbiddenWords(text: string, kind: string) {
   }
 }
 
-function spotLargePayload(text: string, max: number, kind: string) {
-  if (text.length > max) throw new Error('Too much content to ' + kind)
+function spotLargePayload(text: string, max: number) {
+  if (text.length > max) throw new Error('Too much content to return')
 }
 
 async function execute(code: string) {
   try {
-    spotLargePayload(code, 88, 'accept')
+    spotLargePayload(code, 250)
     spotForbiddenWords(code, 'Code')
     const output = await eval(code)
     spotForbiddenWords(output, 'Output')
-    spotLargePayload(output.toString(), 32, 'return')
+    spotLargePayload(output.toString(), 32)
     return output.toString()
   } catch (e) {
     if (e instanceof Deno.errors.PermissionDenied) {
@@ -57,7 +56,6 @@ async function execute(code: string) {
 }
 
 async function handler(req: Request) {
-  Object.freeze(window)
   Object.freeze(forbidden)
   Object.freeze(spotForbiddenWords)
   Object.freeze(spotLargePayload)
