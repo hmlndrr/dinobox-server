@@ -8,7 +8,7 @@
     ],
     "permissions": {
         "network": true,
-        "env": false,
+        "process": true,
         "files": [
             {
                 "allow": "r",
