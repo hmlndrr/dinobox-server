@@ -9,6 +9,7 @@
     "permissions": {
         "network": true,
         "process": true,
+        "env": false,
         "files": [
             {
                 "allow": "r",
