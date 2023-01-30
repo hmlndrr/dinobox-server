@@ -18,6 +18,7 @@ const forbidden = [
   'patch',
   'delete',
   'head',
+  'eval',
   'get',
   'fetch',
   'encodeURI',
@@ -25,6 +26,7 @@ const forbidden = [
   '[',
   ']',
   '/',
+  '\'
 ]
 
 function spotForbiddenWords(text: string, kind: string) {
