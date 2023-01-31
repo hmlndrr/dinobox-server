@@ -26,7 +26,7 @@ const forbidden = [
   '[',
   ']',
   '/',
-  '\'
+  '\\',
 ]
 
 function spotForbiddenWords(text: string, kind: string) {
