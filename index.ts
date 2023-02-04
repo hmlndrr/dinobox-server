@@ -37,17 +37,17 @@ function spotForbiddenWords(text: string, kind: string) {
   }
 }
 
-function spotLargePayload(text: string, max: number) {
-  if (text.length > max) throw new Error('Too much content to return')
+function spotLargePayload(text: string, max: number, kind: string) {
+  if (text.length > max) throw new Error('Too much content in ' + kind)
 }
 
 async function execute(code: string) {
   try {
-    spotLargePayload(code, 190)
+    spotLargePayload(code, 190, 'Input')
     spotForbiddenWords(code, 'Code')
     const output = await eval(code)
     spotForbiddenWords(output, 'Output')
-    spotLargePayload(output.toString(), 32)
+    spotLargePayload(output.toString(), 32, 'Output')
     return output.toString()
   } catch (e) {
     if (e instanceof Deno.errors.PermissionDenied) {
