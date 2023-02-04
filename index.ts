@@ -43,7 +43,7 @@ function spotLargePayload(text: string, max: number) {
 
 async function execute(code: string) {
   try {
-    spotLargePayload(code, 250)
+    spotLargePayload(code, 190)
     spotForbiddenWords(code, 'Code')
     const output = await eval(code)
     spotForbiddenWords(output, 'Output')
